@@ -11,11 +11,19 @@ int main() {
   Music music = LoadMusicStream("./audio/7th Floor Tango - Silent Partner.mp3");
   PlayMusicStream(music);
 
-  int PLAY=1;
-
   while (!WindowShouldClose()) {
 
     UpdateMusicStream(music);
+    
+    if (IsKeyPressed(KEY_SPACE)) {
+      if (IsMusicStreamPlaying(music)) {
+        PauseMusicStream(music);
+      } else {
+        ResumeMusicStream(music);
+      }
+    }
+
+
 
     BeginDrawing();
     ClearBackground(BG);
